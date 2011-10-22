@@ -81,20 +81,26 @@ X = [ones(m, 1) X];
 
 fprintf('Running gradient descent ...\n');
 
+figure;
+hold on;
+colors = ['r', 'b', 'k', 'y'];
+alphas=[.03 .1 .3 .5];
+for i =1:4
+
 % Choose some alpha value
-alpha = 0.01;
-num_iters = 100;
+num_iters = 50;
 
 % Init Theta and Run Gradient Descent 
 theta = zeros(3, 1);
-[theta, J_history] = gradientDescentMulti(X, y, theta, alpha, num_iters);
+[theta, J_history] = gradientDescentMulti(X, y, theta, alphas(i), num_iters);
 
+
+alpha = 0.3;
 % Plot the convergence graph
-figure;
-plot(1:numel(J_history), J_history, '-b', 'LineWidth', 2);
+plot(1:numel(J_history), J_history,  colors(i) , 'LineWidth', 2);
 xlabel('Number of iterations');
 ylabel('Cost J');
-
+end
 % Display gradient descent's result
 fprintf('Theta computed from gradient descent: \n');
 fprintf(' %f \n', theta);
