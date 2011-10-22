@@ -18,13 +18,8 @@ for iter = 1:num_iters
     %
 
 
-
-
-
-
-
-
-
+    %size((X*theta - y)'*X)
+    theta = theta - alpha * (1/m * (X*theta - y)'*X)';
 
 
     % ============================================================
