@@ -26,9 +26,16 @@ sigma = zeros(1, size(X, 2));
 % Hint: You might find the 'mean' and 'std' functions useful.
 %       
 
+mu = mean(X, 1);
 
+m = size(X,1);
+X_norm = X - kron(ones(m, 1), mu);
 
+sigma = max(std(X_norm), 0.0001)
+X_norm = X_norm ./ kron(ones(m,1), sigma);
 
+%mean(X_norm)
+%std(X_norm)
 
 
 
